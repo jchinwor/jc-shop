@@ -35,7 +35,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
 
         try{
 
-          const result = await axios.get('/api/config/paypal');
+          const result = await axios.get(`${serverApi.value}/api/config/paypal`);
   
    
           if(result.data){
@@ -57,7 +57,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
 
         if(orderid){
 
-          const result = await axios.put(`/api/orders/${orderid}/pay`,paymentResult);
+          const result = await axios.put(`${serverApi.value}/api/orders/${orderid}/pay`,paymentResult);
     
           const orderData = result.data
     
@@ -87,7 +87,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
 
       try{
 
-          const result = await axios.get(`/api/orders/${orderid}`,config);
+          const result = await axios.get(`${serverApi.value}/api/orders/${orderid}`,config);
     
           // const orderData = result.data
 
@@ -140,7 +140,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
         
       try {
   
-          const result = await axios.post("/api/orders/",{
+          const result = await axios.post(`${serverApi.value}/api/orders/`,{
             shippingAddress:shippingAddress,
             orderItems:Cartitems,
             totalPrice:grandTotal,
@@ -191,7 +191,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
         
         try {
     
-            const result = await axios.get(`/api/users/${userid}/cartItems`);
+            const result = await axios.get(`${serverApi.value}/api/users/${userid}/cartItems`);
             const CartItemsdata = result.data.CartItems
 
             CartItems.value = CartItemsdata
@@ -228,7 +228,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
               
               if(userid){
         
-                const result = await axios.post(`/api/users/${userid}/deleteCartItem`,{
+                const result = await axios.post(`${serverApi.value}/api/users/${userid}/deleteCartItem`,{
                   productId: productid
                 });
 
@@ -261,7 +261,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
               
               if(userid){
         
-                const result = await axios.post(`/api/users/${userid}/removeCartItem`,{
+                const result = await axios.post(`${serverApi.value}/api/users/${userid}/removeCartItem`,{
                     productId: productid
                 
                 });
@@ -305,7 +305,7 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
 
       if(userid){
         
-          const result = await axios.post(`/api/users/${userid}/cart`,{
+          const result = await axios.post(`${serverApi.value}/api/users/${userid}/cart`,{
               productId: productid,
               product:product
           });
