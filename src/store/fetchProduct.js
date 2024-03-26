@@ -9,6 +9,8 @@ export const useProductStore = defineStore('product', ()=>{
     const productdata= ref(null)
     const category = ref('')
     const pname = ref('')
+     const serverApi = ref(null)
+    serverApi.value = process.env.VUE_APP_SERVICE_URL
     
  
 
@@ -16,7 +18,7 @@ export const useProductStore = defineStore('product', ()=>{
       
         try {
    
-            const result = await axios.get('/api/products/'+id)
+            const result = await axios.get(`${serverApi.value}/api/products/`+id)
             const product = result.data
 
             productdata.value = product;
