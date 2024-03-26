@@ -176,7 +176,7 @@
         </DataView>
     </div>
 
-    <!-- Featured Products -->
+    <!-- Category slider  -->
     <div class="card surface-0 border-round px-3 ">
         <h2 class="flex justify-content-center pt-4">
                 Shop By Categories
@@ -277,7 +277,7 @@ const responsiveOptions = ref([
     },
     {
         breakpoint: '575px',
-        numVisible: 1,
+        numVisible: 2,
         numScroll: 1
     }
 ]);
