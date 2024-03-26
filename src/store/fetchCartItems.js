@@ -12,6 +12,8 @@ export const useCartItemsStore = defineStore('cartitems', ()=>{
     const outofstocktoast = ref(false)
     const productremovetoast = ref(false)
     const client_id = ref([])
+     const serverApi = ref(null)
+    serverApi.value = process.env.VUE_APP_SERVICE_URL
 
     const Customer_order = ref([])
     const Customer_shippingAddress = ref([])
