@@ -9,11 +9,13 @@ export const useAddToCartStore = defineStore('addtocart', ()=>{
     const showSuccessMessage= ref(false)
     
     const CartItems= ref([])
+     const serverApi = ref(null)
+    serverApi.value = process.env.VUE_APP_SERVICE_URL
 
     const addToCart = async(productid) =>{
         try {
   
-            const result = await axios.post('/api/users/12345/cart',{
+            const result = await axios.post(`${serverApi.value}/api/users/12345/cart`,{
                 productId: productid,
             });
 
