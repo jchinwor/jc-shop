@@ -37,7 +37,7 @@ export const useProductsStore = defineStore('products', ()=>{
       
         try {
    
-            const result = await axios.get('/api/products/latest')
+            const result = await axios.get(`${serverApi.value}/api/products/latest`)
             const productslat = result.data
 
             latestproductsdata.value = productslat;
@@ -60,7 +60,7 @@ const getCategory = async() =>{
 
   try{
 
-      let result = await axios.get('/api/categories/')
+      let result = await axios.get(`${serverApi.value}/api/categories/`)
       const categoriesData = result.data.categories
       
       if(result.data.success){
