@@ -8,13 +8,15 @@ export const useProductsStore = defineStore('products', ()=>{
     const latestproductsdata= ref([])
     const categories = ref([])
     // const error = ref(null)
+     const serverApi = ref(null)
+    serverApi.value = process.env.VUE_APP_SERVICE_URL
 
    
     const products = async () =>{
        
         try {
    
-            const result = await axios.get('https://jc-shop-api.onrender.com/api/products')
+            const result = await axios.get(`${serverApi.value}/api/products`)
             const products = result.data
 
             productsdata.value = products;
@@ -92,6 +94,7 @@ const getCategory = async() =>{
         latestproductsdata,
         latestproducts,
         categories,
+        serverApi
     }
 
 })
