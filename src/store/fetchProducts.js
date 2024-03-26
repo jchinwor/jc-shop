@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import {  onMounted, ref } from "vue";
 import axios from "axios";
-
+   
 export const useProductsStore = defineStore('products', ()=>{
 
     const productsdata= ref([])
