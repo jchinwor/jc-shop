@@ -9,7 +9,7 @@ export const useProductsStore = defineStore('products', ()=>{
     const categories = ref([])
     // const error = ref(null)
 
-
+   
     const products = async () =>{
        
         try {
