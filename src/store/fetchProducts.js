@@ -11,7 +11,7 @@ export const useProductsStore = defineStore('products', ()=>{
 
 
     const products = async () =>{
-      
+       
         try {
    
             const result = await axios.get('https://jc-shop-api.onrender.com
