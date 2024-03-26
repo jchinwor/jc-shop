@@ -19,6 +19,8 @@ export const useAuthStore = defineStore('Auth', ()=>{
     const regdate = ref('')
     const customerOrders = ref({})
     const customerPaidOrders = ref({})
+      const serverApi = ref(null)
+    serverApi.value = process.env.VUE_APP_SERVICE_URL
 
    
     
@@ -59,7 +61,7 @@ const updateUserCartItems = async (CartItemsInLoc,userid) =>{
 
             try {
     
-              const result = await axios.post(`/api/users/${userid}/cartItems`,{
+              const result = await axios.post(`${serverApi.value}/api/users/${userid}/cartItems`,{
                 cartitemsvalue: CartItemsInLoc
               });
               const CartItemsdata = result.data
@@ -83,7 +85,7 @@ const authUser = async(email,password) =>{
       
 
    
-            let result = await axios.post('/api/users/login',{
+            let result = await axios.post(`${serverApi.value}/api/users/login`,{
                 email:email,
                 password:password
             })
@@ -118,7 +120,7 @@ const authUser = async(email,password) =>{
 
         try{
 
-            let result = await axios.post('/api/users/register',userData);
+            let result = await axios.post(`${serverApi.value}/api/users/register`,userData);
             
             if(result.data.success !== undefined){
 
@@ -176,7 +178,7 @@ const authUser = async(email,password) =>{
         
       }
 
-        let res = await axios.get('/api/users/profile',config)
+        let res = await axios.get(`${serverApi.value}/api/users/profile`,config)
 
         if(res){
 
@@ -208,7 +210,7 @@ const authUser = async(email,password) =>{
 
       try{
 
-          const result = await axios.get('/api/orders/',config);
+          const result = await axios.get(`${serverApi.value}/api/orders/`,config);
     
           // const orderData = result.data
 
@@ -249,7 +251,7 @@ const getAllPaidCustomerOrders = async() =>{
 
       try{
 
-          const result = await axios.get('/api/orders/paidorders',config);
+          const result = await axios.get(`${serverApi.value}/api/orders/paidorders`,config);
     
           // const orderData = result.data
 
@@ -290,7 +292,7 @@ const getCustomerOrderCartItem = async (productid) =>{
   
         try{
   
-            const result = await axios.get('/api/orders/getCartItem/'+productid,config);
+            const result = await axios.get(`${serverApi.value}/api/orders/getCartItem/`+productid,config);
       
             // const orderData = result.data
   
@@ -331,7 +333,7 @@ const createProductReview = async (productid,ratingData) =>{
 
     try{
 
-        const result = await axios.post(`/api/products/${productid}/review`,ratingData,config);
+        const result = await axios.post(`${serverApi.value}/api/products/${productid}/review`,ratingData,config);
   
         // const orderData = result.data
 
@@ -373,7 +375,7 @@ const UpdateUserProfile = async(updatedata) =>{
         
         }
 
-          let result = await axios.put('/api/users/profile',updatedata,config)
+          let result = await axios.put(`${serverApi.value}/api/users/profile`,updatedata,config)
 
           if(result){
               
@@ -405,7 +407,7 @@ const UpdateUserProfile = async(updatedata) =>{
           
           }
     
-            let result = await axios.put('/api/users/updatepassword',updatedata,config)
+            let result = await axios.put(`${serverApi.value}/api/users/updatepassword`,updatedata,config)
     
             if(result){
     
