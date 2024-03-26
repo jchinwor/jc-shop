@@ -14,7 +14,7 @@ export const useProductsStore = defineStore('products', ()=>{
        
         try {
    
-            const result = await axios.get('/api/products')
+            const result = await axios.get('https://jc-shop-api.onrender.com/api/products')
             const products = result.data
 
             productsdata.value = products;
