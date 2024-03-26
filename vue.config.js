@@ -5,7 +5,7 @@ module.exports = defineConfig({
     // proxy: 'http://localhost:8000',
     proxy: {
       '': {
-         target: 'http://localhost:8000',
+         target: 'https://jc-shop-api.onrender.com',
          ws: false,
        }
     }
