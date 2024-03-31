@@ -1,7 +1,7 @@
 <template> 
 <Header />
 <RouterView v-slot="{ Component }" class="content" :key="route.fullPath">
-  <Transition :name="(route?.meta?.transition as string) || 'fade'" mode="out-in" appear>
+  <Transition :name="(route?.meta?.transition as string) || 'fade'" mode="out-in" appear="">
     <component :is="Component" />
   </Transition>
 </RouterView>
