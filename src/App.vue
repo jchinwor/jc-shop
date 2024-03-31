@@ -1,16 +1,10 @@
 <template> 
 <Header />
-<RouterView v-slot="{ Component }" class="content" :key="route.fullPath">
-  <Transition :name="(route?.meta?.transition as string) || 'fade'" mode="out-in" appear="">
-    <component :is="Component" />
-  </Transition>
-</RouterView>
+<router-view />
 <Footer />
 </template>
 
 <script setup>
-import { RouterView, useRoute } from 'vue-router'
-const route = useRoute()
 import NavBar from './components/NavBar.vue'
 import Header from './components/Header.vue'
 import Navigation from './components/Navigation.vue'
