@@ -1,7 +1,7 @@
 <template> 
 <Header />
 <router-view v-slot="{ Component }">
-  <transition name="slide" >
+  <transition name="fade" >
     <component :is="Component" />
   </transition>
 </router-view>
@@ -19,6 +19,15 @@ import Footer from './components/Footer.vue'
 
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.fade-enter-from,
+.fade-leave-active {
+  opacity: 0;
+}
  *{
     box-sizing: border-box;
     font-family: Arial;
