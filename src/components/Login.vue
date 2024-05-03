@@ -3,6 +3,9 @@
     
         <form @submit.prevent="onSubmit">
             <Fieldset legend="Login">
+                 <div class="">
+                    <ProgressBar mode="indeterminate" style="height: 6px" v-if="loadingdata" class="mb-4" ></ProgressBar>
+                 </div>
             <div class="card flex justify-content-center ">
             <div>
                 <div class="flex flex-column gap-2 mb-3">
@@ -18,9 +21,17 @@
             <p>
                 Don't have an account <router-link to="/user/register/account"> Register</router-link>
             </p>
-            <div class="flex flex-column gap-2 mt-3">
-                <Button type="submit" label="Login" />  
-            </div> 
+             <div v-if="loadingdata">
+                     <div class="flex flex-column gap-2 mt-3" >
+                        <Button type="submit" label="Login" disabled/>  
+                    </div>
+                </div>
+                <div v-else>
+                     <div class="flex flex-column gap-2 mt-3" >
+                        <Button type="submit" label="Login" />  
+                    </div>
+                </div>
+                
             </div>
 
         </div>
@@ -48,9 +59,9 @@ export default {
         const toast = useToast();
         const router = useRouter();
 
-
+        const loadingdata = ref(false)
         const store = useAuthStore();
-        const { token,usermain,userid } = storeToRefs(store)
+        const { token,usermain,userid,error } = storeToRefs(store)
         const { authUser,updateUserCartItems } = store
 
         const cartStore = useCartItemsStore();
@@ -94,6 +105,7 @@ export default {
                 // resetForm();
             }else{
 
+                 loadingdata.value = true
                     //    isLoggedIn()
                 authUser(email.value,password.value)
                 .then(result =>{
@@ -101,7 +113,7 @@ export default {
 
                                 toast.add({ severity: 'success', summary: 'User successfully logged in', detail: '', life: 1000 });
                           
-
+                                 loadingdata.value = false
                                 //Search for redirect path
                                 let searchParams = new URLSearchParams(window.location.search);
                                 setTimeout(() => {
@@ -127,6 +139,7 @@ export default {
 
                                 }, 2000) 
                     }else{  
+                         loadingdata.value = false
                         
                          toast.add({ severity: 'error', summary: result.data.msg, life: 5000 });
                     }
@@ -134,9 +147,14 @@ export default {
                   
                 }).catch( err =>{
 
-                   
-                    console.log(err.message)
-                    // toast.add({ severity: 'error', summary: `${err}`, life: 5000 });
+                    if(error.value){  
+                       loadingdata.value = false
+                        //  console.log(result.data)
+                       
+                         toast.add({ severity: 'error', detail: error.value, life: 3000 });
+                    }
+
+               
                    
                 })
             }
@@ -152,7 +170,7 @@ export default {
 
         
             return{
-                onSubmit,email,password,toast,token
+                onSubmit,email,password,toast,token,loadingdata
             }
     }
 }

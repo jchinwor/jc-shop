@@ -83,39 +83,47 @@ const updateUserCartItems = async (CartItemsInLoc,userid) =>{
    
 const authUser = async(email,password) =>{
       
+            try{
 
-   
-            let result = await axios.post(`${serverApi.value}/api/users/login`,{
-                email:email,
-                password:password
-            })
-            
-            if(result.data.success){
+                let result = await axios.post(`${serverApi.value}/api/users/login`,{
+                  email:email,
+                  password:password
+              })
+              
+              if(result.data.success){
+  
+                  const token1 = result.data.token;
+                  const user1 = result.data.user;
+  
+                  usermain.value = user1
+                  token.value = token1
+  
+                  firstname.value = usermain.value.firstname
+  
+                  
+  
+                  localStorage.setItem('jwtToken',token.value);
+                  setAuthHeader(token.value)
+  
+  
+              }
+  
+              return result;
 
-                const token1 = result.data.token;
-                const user1 = result.data.user;
 
-                usermain.value = user1
-                token.value = token1
+            }catch(err){
 
-                firstname.value = usermain.value.firstname
-
-                
-
-                localStorage.setItem('jwtToken',token.value);
-                setAuthHeader(token.value)
-
-
+                error.value = err.response.data.msg
             }
-
-            return result;
+   
+           
 
             
     
        
    
    }
-    const UserRegister = async(userData) =>{
+const UserRegister = async(userData) =>{
 
 
         try{

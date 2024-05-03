@@ -1,7 +1,11 @@
 <template>
    <div class="card mt-5">
+   
        <form @submit.prevent="onSubmit">
              <Fieldset legend="User Registration">
+                 <div class="">
+                    <ProgressBar mode="indeterminate" style="height: 6px" v-if="loadingdata" class="mb-4" ></ProgressBar>
+                 </div>
                 <div class="card flex justify-content-center ">
                 <div>
                     <div class="flex flex-column md:flex-row gap-2 mb-3">
@@ -34,9 +38,17 @@
                 <p>
                     Already have an account <router-link to="/user/login"> Login</router-link>
                 </p>
-                <div class="flex flex-column gap-2 mt-3">
-                    <Button type="submit" label="Register" />  
+                <div v-if="loadingdata">
+                     <div class="flex flex-column gap-2 mt-3" >
+                        <Button type="submit" label="Register" disabled/>  
+                    </div>
                 </div>
+                <div v-else>
+                     <div class="flex flex-column gap-2 mt-3" >
+                        <Button type="submit" label="Register" />  
+                    </div>
+                </div>
+               
                 </div>
 
             </div>
@@ -67,7 +79,7 @@ const confirm_password = ref('');
 
 
 const toast = useToast();
-
+const loadingdata = ref(false)
  
 
 const onSubmit = () => {
@@ -114,6 +126,8 @@ const onSubmit = () => {
             confirm_password:confirm_password.value
         };
 
+         loadingdata.value = true
+
        
         UserRegister(userData).then((result)=>{
 
@@ -123,6 +137,7 @@ const onSubmit = () => {
 
                     toast.add({ severity: 'success', summary: 'Success', detail: 'User successfully registered', life: 2000 });
         
+                     loadingdata.value = false
 
                     setTimeout(() => {
 
@@ -140,10 +155,10 @@ const onSubmit = () => {
         }).catch((err)=>{
 
              if(error.value){  
-
+                    loadingdata.value = false
                         //  console.log(result.data)
                        
-                         toast.add({ severity: 'error', summary: error.value, life: 3000 });
+                         toast.add({ severity: 'error', detail: error.value, life: 3000 });
                     }
 
             

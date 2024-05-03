@@ -3,7 +3,7 @@
     <div class="card flex flex-column justify-content-center w-full">
         <b class="text-left">
             CATEGORIES
-        </b>
+        </b> 
         <Divider />
             <div class="card flex justify-content-center" >
             

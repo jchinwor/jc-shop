@@ -21,11 +21,11 @@ import Footer from './components/Footer.vue'
 <style>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.35s ease;
+  transition: opacity 0.5s ease-out;
 }
 
 .fade-enter-from,
-.fade-leave-active {
+.fade-leave-to {
   opacity: 0;
 }
  *{

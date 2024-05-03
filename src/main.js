@@ -50,6 +50,7 @@ import Slider from 'primevue/slider';
 import Checkbox from 'primevue/checkbox';
 import Dropdown from 'primevue/dropdown';
 import ProgressSpinner from 'primevue/progressspinner';
+import ProgressBar from 'primevue/progressbar';
 
 
  
@@ -166,6 +167,7 @@ app.component('Listbox',Listbox)
 app.component('Slider',Slider)
 app.component('Checkbox',Checkbox)
 app.component('Dropdown',Dropdown)
+app.component('ProgressBar',ProgressBar)
 app.component('ProgressSpinner',ProgressSpinner)
 
 
