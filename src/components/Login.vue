@@ -2,7 +2,7 @@
   <div class="card mt-5">
     
         <form @submit.prevent="onSubmit">
-             <Toast />
+             <Toast position="top-center" />
             <Fieldset legend="Login">
                  <div class="">
                     <ProgressBar mode="indeterminate" style="height: 6px" v-if="loadingdata" class="mb-4" ></ProgressBar>
