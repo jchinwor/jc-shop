@@ -96,13 +96,13 @@ export default {
 
         if(email.value === "" ){
         
-         toast.add({ severity: 'error', summary: 'Email is required', detail: '',group: 'tc', life: 6000 });
+         toast.add({ severity: 'error', summary: 'Email is required', detail: '', life: 6000 });
         
                 // resetForm();
             }
             else if(password.value === "" ) {
                 
-                toast.add({ severity: 'error', summary: 'Password is required',detail: '',group: 'tc', life: 5000 });
+                toast.add({ severity: 'error', summary: 'Password is required',detail: '', life: 5000 });
                 // resetForm();
             }else{
 
