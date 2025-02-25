@@ -1,6 +1,6 @@
 <template>
   <div class="card mt-5">
-     <Toast position="top-center" group="tc" />
+     
         <form @submit.prevent="onSubmit">
             
             <Fieldset legend="Login">
@@ -39,7 +39,7 @@
         </Fieldset>
         </form>
      
-        
+        <Toast position="top-center"  />
     </div>
     
 </template>
