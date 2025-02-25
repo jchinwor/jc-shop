@@ -29,6 +29,13 @@ const routes = [
     meta:{
       title:'Home',     
       },
+  }, {
+    path: '/index.html',
+    name: 'HomePage',
+    component: HomePage,
+    meta:{
+      title:'Home',     
+      },
   },
   {
     path: '/checkout/summary',
