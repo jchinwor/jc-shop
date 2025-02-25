@@ -39,7 +39,7 @@
         </Fieldset>
         </form>
      
-        <Toast position="top-center"  />
+        
     </div>
     
 </template>
