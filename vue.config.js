@@ -8,7 +8,7 @@ module.exports = defineConfig({
     // proxy: 'http://localhost:8000',
     proxy: {
       '': {
-         target: 'https://api-jcshop.cleanupnaija.online/',
+         target: 'https://jc-shop-api.onrender.com/',
          ws: false,
        }
     }
