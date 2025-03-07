@@ -256,7 +256,7 @@
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
-import { computed, onMounted, onUnmounted,  ref } from "vue";
+import { computed, onMounted, onBeforeUnmount ,  ref } from "vue";
 import { useRouter } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
@@ -329,7 +329,7 @@ const searchBTN = () =>{
       
 }
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   selectedProduct.value = "";
 });
 // const submitSearch = async() =>{
