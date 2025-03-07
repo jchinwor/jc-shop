@@ -256,7 +256,7 @@
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
-import { computed, onMounted, onBeforeUnmount, onBeforeRouteLeave ,  ref } from "vue";
+import { computed, onMounted, onBeforeRouteLeave ,  ref } from "vue";
 import { useRouter } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
