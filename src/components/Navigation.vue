@@ -282,7 +282,7 @@ const isLetter = (e) => {
   else e.preventDefault(); // If not match, don't add to input text
 }
 
-const selectedProduct = ref('');
+const selectedProduct = ref('Enter product key word');
 const filteredProducts = ref();
 
 const search = (event) => {
@@ -330,7 +330,7 @@ const searchBTN = () =>{
 }
 
 onUnmounted(() => {
-  selectedProduct.value = ''
+  selectedProduct.value = "";
 });
 // const submitSearch = async() =>{
 
