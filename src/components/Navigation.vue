@@ -256,8 +256,8 @@
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
-import { computed, onMounted,  ref } from "vue";
-import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import { computed, onMounted, watch , ref } from "vue";
+import { useRouter } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
 
@@ -330,8 +330,9 @@ const searchBTN = () =>{
       
 }
 
-onBeforeRouteLeave(() => {
-  selectedProduct.value = "";
+  // Watch for route changes and clear search when navigating
+watch(() => route.path, () => {
+  selectedProduct.value = ""; // Clear search on route change
 });
 // const submitSearch = async() =>{
 
