@@ -256,7 +256,7 @@
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
-import { computed, onMounted, onBeforeUnmount ,  ref } from "vue";
+import { computed, onMounted, onBeforeUnmount, onBeforeRouteLeave ,  ref } from "vue";
 import { useRouter } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
@@ -282,7 +282,7 @@ const isLetter = (e) => {
   else e.preventDefault(); // If not match, don't add to input text
 }
 
-const selectedProduct = ref('Enter product key word');
+const selectedProduct = ref('');
 const filteredProducts = ref();
 
 const search = (event) => {
@@ -329,7 +329,7 @@ const searchBTN = () =>{
       
 }
 
-onBeforeUnmount(() => {
+onBeforeRouteLeave(() => {
   selectedProduct.value = "";
 });
 // const submitSearch = async() =>{
