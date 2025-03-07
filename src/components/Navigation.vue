@@ -257,12 +257,13 @@ import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
 import { computed, onMounted, watch , ref } from "vue";
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute  } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
 
 
 const router = useRouter()
+const route = useRoute();
 const visible = ref(false);
 const store = useAuthStore();
 const { isLoggedIn, NotLoggedIn, LogOut } = store
