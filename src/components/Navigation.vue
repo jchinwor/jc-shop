@@ -257,10 +257,10 @@ import { storeToRefs } from 'pinia';
 import { useAuthStore } from "../store/Auth"
 import { useCartItemsStore } from "../store/fetchCartItems"
 import { computed, onMounted,  ref } from "vue";
-import { useRouter } from 'vue-router';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import { useProductsStore } from "../store/fetchProducts"
 import { useToast } from 'primevue/usetoast'
-import { onBeforeRouteLeave } from 'vue-router';
+
 
 const router = useRouter()
 const visible = ref(false);
